@@ -1,3 +1,5 @@
+// Jonathan Aditya Vandra - 672022006
+// Tugas 3
 #include <GL/freeglut.h>
 #include <cmath>
 
@@ -69,7 +71,7 @@ int main(int argc, char** argv) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
     glutInitWindowSize(winW, winH);
-    glutCreateWindow("Bouncing White Dot");
+    glutCreateWindow("Jonathan Aditya Vandra - 672022006");
 
     init();
     glutDisplayFunc(display);
