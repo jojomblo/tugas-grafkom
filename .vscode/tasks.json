@@ -5,7 +5,18 @@
       "label": "build",
       "type": "shell",
       "command": "g++",
-      "args": ["-o", "main", "main.cpp", "-lglut", "-lGL", "-lGLU", "-lGLEW"],
+      "args": [
+        "-o",
+        "main",
+        "main.cpp",
+        "-lglut",
+        "-lGL",
+        "-lGLU",
+        "-lGLEW",
+        "-ljpeg",
+        "-lpng",
+        "-lwebp"
+      ],
       "group": {
         "kind": "build",
         "isDefault": true
