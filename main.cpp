@@ -6,6 +6,7 @@
 #define HALFX ((int)(WW/2))
 #define HALFY ((int)(WH/2))
 #define deltat .001
+
 int startTime = 0;
 
 int WindowWidth;
@@ -29,21 +30,21 @@ void Display(){
     glLineWidth(4.0);
 
     float startShape[12][2] = {
-        {10, 25}, {10, -15},  // Sisi kanan luar
-        {5, -20}, {-10, -20}, // Lengkungan bawah luar
-        {-15, -15}, {-15, -5},// Sisi kiri luar
-        {-5, -5}, {-5, -10},  // Sisi kiri dalam
-        {0, -10}, {0, -10},   // Lengkungan bawah dalam
-        {0, 20}, {-5, 25}     // Bagian atas dalam
+        {10, 25}, {10, -15}, 
+        {5, -20}, {-10, -20}, 
+        {-15, -15}, {-15, -5},
+        {-5, -5}, {-5, -10},  
+        {0, -10}, {0, -10}, 
+        {0, 20}, {-5, 25}
     };
 
      float endShape[12][2] = {
-        {-5, 20}, {10, 20},  // Sisi atas luar
-        {15, 15}, {15, 5},    // Lengkungan kanan atas
-        {10, 0}, {15, -5},    // Tonjolan tengah
-        {15, -15}, {10, -20}, // Lengkungan kanan bawah
-        {-5, -20}, {5, -10},// Sisi bawah & kiri dalam
-        {0, 0}, {5, 10}      // Bagian tengah & atas dalam
+        {-5, 20}, {10, 20},
+        {15, 15}, {15, 5},
+        {10, 0}, {15, -5},
+        {15, -15}, {10, -20},
+        {-5, -20}, {5, -10},
+        {0, 0}, {5, 10}
     };
 
     float intermediateShape[12][2];
@@ -53,18 +54,18 @@ void Display(){
         {0.5, 1, 0},{0.5, 0, 1},{1, 0, 0.5},{0, 1, 0.5}
     };
 
-    // Hitung waktu sejak start
+  
     int currentTime = glutGet(GLUT_ELAPSED_TIME);
     float elapsedSeconds = (currentTime - startTime) / 1000.0f;
 
     static float Tween = 0.0f;
 
-    // Freeze selama 2 detik
+   
     if (elapsedSeconds >= 2.0f && Tween < 1.0f) {
         Tween += deltat;
     }
 
-    // Lerp antara start dan end
+  
     for (int Vtx = 0; Vtx < 12; Vtx++) {
         intermediateShape[Vtx][0] = (1.0f - Tween) * startShape[Vtx][0] + Tween * endShape[Vtx][0];
         intermediateShape[Vtx][1] = (1.0f - Tween) * startShape[Vtx][1] + Tween * endShape[Vtx][1];
@@ -99,7 +100,7 @@ int main(int argc, char **argv){
     
     glutCreateWindow("Tweening J ke 3");
 
-    startTime = glutGet(GLUT_ELAPSED_TIME); // ⏱️ Simpan waktu awal
+    startTime = glutGet(GLUT_ELAPSED_TIME); 
 
     glutDisplayFunc(Display);
     glutReshapeFunc(Reshape);
